@@ -1,10 +1,10 @@
 # encoding: utf-8
-require 'rubygems'
 require 'httparty'
+require 'json'
+require 'jsonpath'
 
-class Dmp_Interface
+class InterfaceTestDemo
   include HTTParty
-  base_uri 'www.pin-qu.com'
 
 	def set_interface(url)
 		@path = url
