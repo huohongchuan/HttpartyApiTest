@@ -1,14 +1,16 @@
 # encoding: utf-8
-require 'rspec'
 
-Given /^提供一个服务地址如'(.*)'$/ do |url|
-	@interface = Dmp_Interface.new
-	@interface.set_interface(url)
+Given /^我设置http-header为'(.*)'$/ do |hparam|
+	InterfaceTestDemo.headers(hparam)
 end
 
-When /^输入接口参数'(.*)'$/ do |value|
-	@interface.set_value(value)
+Given /^我设置http-cookies为'(.*)'$/ do |cparam|
+	InterfaceTestDemo.cookies(cparam)
 end
+
+And /^$/ do 
+
+
 
 Then /^通过(get|post)方式返回结果为'(.*)'$/ do |mode,code|
     @interface.send_mode(mode)

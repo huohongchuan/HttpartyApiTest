@@ -6,6 +6,42 @@ require 'jsonpath'
 class InterfaceTestDemo
   include HTTParty
 
+  #设置http请求头
+  def setheaders(hparam)
+  	self.class.headers(hparam)
+  end
+  #设置http cookie
+  def setcookies(cparam)
+  	self.class.cookies(cparam)
+  end
+
+  def get(text)
+  	self.class.get(text)
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=begin
 	def set_interface(url)
 		@path = url
 	end
@@ -41,5 +77,7 @@ class InterfaceTestDemo
 	    #get
 		@dmp_response.code
 	end
+=end
+
 
 end
