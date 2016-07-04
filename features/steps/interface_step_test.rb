@@ -1,14 +1,24 @@
 # encoding: utf-8
 
 Given /^我设置http-header为'(.*)'$/ do |hparam|
-	InterfaceTestDemo.headers(hparam)
+	interfacetest.headers = hparam
 end
 
-Given /^我设置http-cookies为'(.*)'$/ do |cparam|
+Given /^我设置http-body为'(.*)'$/ do |bparam|
 	InterfaceTestDemo.cookies(cparam)
 end
 
-And /^$/ do 
+When /^我设置请求体为'(.*)'$/ do |options|
+	interfacetest.options = 
+end
+
+And /^我通过get方式请求'(.*)'$/ do |url|
+	InterfaceTestDemo.get(url)
+end
+
+And /^我通过post方式请求'(.*)'$/ do |url|
+	InterfaceTestDemo.post
+end
 
 
 

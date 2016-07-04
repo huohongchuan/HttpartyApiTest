@@ -5,79 +5,44 @@ require 'jsonpath'
 
 class InterfaceTestDemo
   include HTTParty
+  #attr_accessor :options
 
-  #设置http请求头
-  def setheaders(hparam)
-  	self.class.headers(hparam)
+  def headers=(hd)
+  	header = JSON.parse hd
+  	@headers = ｛headers:header}
   end
-  #设置http cookie
-  def setcookies(cparam)
-  	self.class.cookies(cparam)
-  end
-
-  def get(text)
-  	self.class.get(text)
-  end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=begin
-	def set_interface(url)
-		@path = url
-	end
-
-	def str_hash(value1)
-	  str1 = value1.split(/&/)
-      str2 = Array.new
-      str1.each{ |element| str2 << element.split(/=)}
-      str3 = Hash[*str2.flatten]
-	end
-
-	def set_value(value)
-		@value = {:query => str_hash(value) }
-	 end
-
-	def get
-        @dmp_response = self.class.get(@path,@value)
-	end
-
-	def post
-		@dmp_response = self.class.post(@path,@value)
-	end
-
-	def send_mode(mode=nil)
-		if mode == 'get'
-		  get
-		else
-		  post
-		end
-	end
-
-	def dmp_response
-	    #get
-		@dmp_response.code
-	end
-=end
 
 
 end
+
+require 'json'
+class TestAbc
+	def initialize
+		@hs = {}
+	end
+	def test1(h={})
+		@hs[:header] = {}
+		@hs[:header] = h	
+	end
+
+	def test2(b={})
+		@hs[:body] = {}
+		@hs[:body] = b
+	end
+	def out
+		puts @hs
+		puts @hs.class
+	end
+end
+#@hs = Hash.new
+str = %Q({"Accept":"text/html", "xxxx":"bbb"})
+str1 = '{"login": "email@example.com", "password": "password"}'
+str4 = '{"loginxxxxxxxx": "email@example.com", "password": "password"}'
+str2 = JSON.parse(str)
+str3 = JSON.parse(str1)
+str5 = JSON.parse(str4)
+
+testabc = TestAbc.new
+testabc.test1(str2)
+testabc.test2(str3)
+testabc.out
